@@ -4,7 +4,7 @@ The official tagline for TypeScript is "JavaScript that scales!" It justifies th
     2. TypeScript is a statically-typed programming with powerful control-flow based type analysis.
 
 ### How is it a superset?
-All valid JavaScript programs are valid TypeScript programs! TypeScript adds optional typing that users can buy into as much as they want to!
+All valid JavaScript programs are valid TypeScript programs! TypeScript adds optional typing that users can buy into as much as they want to.
 
 ```TypeScript
 // Super simple TypeScript example.
@@ -24,7 +24,7 @@ function addNumbers(x, y) {
 const z = 5;
 ```
 
-The two examples above are *both* valid TypeScript programs. The difference as you can probably tell are the type annotations which we said are *optional*. Perhaps unsuprisingly, writing TypeScript without types is basically just writing JavaScript. 
+The two examples above are *both* valid TypeScript programs. The type annotations are *optional*. Perhaps unsuprisingly, writing TypeScript without types is basically just writing JavaScript. 
 
 ### What the heck does control-flow based type analysis mean?
 
