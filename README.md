@@ -7,5 +7,5 @@ Let's get started shall we? Feel free to click along the table of contents in or
 
 
 
-
 Last Updated: 12/02/2018
+By: Justin Kyle Torres (http://justinkyletorres.com)
