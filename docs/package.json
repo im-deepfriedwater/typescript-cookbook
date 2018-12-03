@@ -1,0 +1,28 @@
+{
+  "name": "typescript-cookbook",
+  "version": "1.0.0",
+  "description": "Getting cooking with Typescript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtorre39/typescript-cookbook.git"
+  },
+  "keywords": [
+    "typescript",
+    "cookbook",
+    "tutorial",
+    "how-to"
+  ],
+  "author": "jtorre39",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtorre39/typescript-cookbook/issues"
+  },
+  "homepage": "https://github.com/jtorre39/typescript-cookbook#readme",
+  "dependencies": {
+    "gitbook-cli": "^2.3.2"
+  }
+}
