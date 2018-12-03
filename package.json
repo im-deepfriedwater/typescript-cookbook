@@ -4,7 +4,7 @@
   "description": "Getting cooking with Typescript.",
   "main": "index.js",
   "scripts": {
-    "build-gh": "gitbook build && cp -r _book/. docs/ && echo 'be sure to push the docs folder!'"
+    "build-gh": "gitbook build && cp -r _book/. docs/ && echo be sure to push the docs folder!"
   },
   "repository": {
     "type": "git",
