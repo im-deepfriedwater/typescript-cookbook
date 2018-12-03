@@ -17,7 +17,6 @@ Now, we do:
 To compile a TypeScript file:
 `tsc cookingsomethinggood.ts`
 
-
 ### That's it!
 Note when you compile a file TypeScript automatically creates a `built` folder with corresponding JavaScript files and folders. Don't forget that in the end TypeScript compiles to JavaScript. We can change the output directory and various other settings by modifying a file called `tsconfig.json`, but don't worry we'll get to that in the next section! Additionally, TypeScript works well with modern editors *particularly* VSCode.
 
