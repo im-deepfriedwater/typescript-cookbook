@@ -36,7 +36,7 @@ function returnSelf(x) { // TypeScript will point this out as an error because `
 } 
 ```
 We can fix this by doing:
-```TypeScript
+```TypeScript02:07 AM
 function returnSelf(x: any) {
     return x;
 }

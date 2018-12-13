@@ -6,6 +6,7 @@
 * [Basic coding with TypeScript](basic-coding.md)
 * [Built-in types](built-in.md)
 * [TypeScript cooking with gas](gas.md)
+* [Project Setup Tips and Tricks](project-setup.md)
 * [Interface types](interface.md)
 * [Conditional types](conditional-types.md)
 * [Long list of example programs](example.md)
