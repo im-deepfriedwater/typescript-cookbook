@@ -83,9 +83,9 @@ if (currentDirection === Directions.Up) {
 `void` is normally used to describe the return values of functions that do not return anything. It *can* be used to describe variable types. This describes the set of only `null` or `undefined`.
 
 ```TypeScript
-function doSomething(): void{
+function doSomething(): void {
     console.log("I did it.")
-};
+}
 
 doSomething();
 
