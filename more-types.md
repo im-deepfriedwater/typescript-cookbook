@@ -100,9 +100,40 @@ console.log(result.color, result.width, result.radius);
 Sometimes we do not know what the exact type will be, but we do know what we need to do with it! In that case we can use generics. When we're declaring a generic type, we use type parameters that we take in.
 
 ```TypeScript
-type genericExample = 
+// Not too useful, we're simply 
+// giving the type back to them.
+type genericExample<T> = T; 
+const genericValue: genericExample<number> = 5; 
+
+interface GenericInterface<T> {
+    genericValue: T
+}
+
+const genericInterfaceExample: GenericInterface<string> = {
+    genericValue: "example of a generic thing"
+};
 ```
+
+
+Inspired by an example from the [TypeScript handbook.](https://www.typescriptlang.org/docs/handbook/advanced-types.html) This is an example of types being recursive as you can see it refers to itself. 
+
+```TypeScript
+// Perhaps a more useful example.
+// We can use generics to represent
+// a tree data structure.
+interface LinkedTree<T> {
+    leftSubTree: LinkedTree<T>,
+    rightSubTree: LinkedTree<T>
+    innerValue: T,
+}
+```
+
+Fun fact, you might think that this type is infinitely recursive. As to figure out what a `leftSubTree: LinkedTree<T>` is, the compiler would refer back to the definition and see again that it is an interface that contains a `leftSubTree` of type `LinkedTree<T>` and so on and so on.
+
+Turns out, the designers behind TypeScript solved the problem by following their principle that they don't need 100% soundness. They decide to cut off checking at 5 levels of recursion and just trust the type at that point. (They showcased this in their TypeScript 2018 Build video which can be found [here](https://youtu.be/hDACN-BGvI8)).
+
 ### Conditional type
 ### Optional type
+
 ### Indexable type
 ### Class type

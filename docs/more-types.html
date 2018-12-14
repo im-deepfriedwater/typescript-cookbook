@@ -366,8 +366,31 @@ g.width; <span class="hljs-comment">// We cannot access the width property becau
 </code></pre>
 <h3 id="generics">Generics</h3>
 <p>Sometimes we do not know what the exact type will be, but we do know what we need to do with it! In that case we can use generics. When we&apos;re declaring a generic type, we use type parameters that we take in.</p>
-<pre><code class="lang-TypeScript"><span class="hljs-keyword">type</span> genericExample =
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Not too useful, we&apos;re simply </span>
+<span class="hljs-comment">// giving the type back to them.</span>
+<span class="hljs-keyword">type</span> genericExample&lt;T&gt; = T; 
+<span class="hljs-keyword">const</span> genericValue: genericExample&lt;<span class="hljs-built_in">number</span>&gt; = <span class="hljs-number">5</span>; 
+
+<span class="hljs-keyword">interface</span> GenericInterface&lt;T&gt; {
+    genericValue: T
+}
+
+<span class="hljs-keyword">const</span> genericInterfaceExample: GenericInterface&lt;<span class="hljs-built_in">string</span>&gt; = {
+    genericValue: <span class="hljs-string">&quot;example of a generic thing&quot;</span>
+};
 </code></pre>
+<p>Inspired by an example from the <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html" target="_blank">TypeScript handbook.</a> This is an example of types being recursive as you can see it refers to itself. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Perhaps a more useful example.</span>
+<span class="hljs-comment">// We can use generics to represent</span>
+<span class="hljs-comment">// a tree data structure.</span>
+<span class="hljs-keyword">interface</span> LinkedTree&lt;T&gt; {
+    leftSubTree: LinkedTree&lt;T&gt;,
+    rightSubTree: LinkedTree&lt;T&gt;
+    innerValue: T,
+}
+</code></pre>
+<p>Fun fact, you might think that this type is infinitely recursive. As to figure out what a <code>leftSubTree: LinkedTree&lt;T&gt;</code> is, the compiler would refer back to the definition and see again that it is an interface that contains a <code>leftSubTree</code> of type <code>LinkedTree&lt;T&gt;</code> and so on and so on.</p>
+<p>Turns out, the designers behind TypeScript solved the problem by following their principle that they don&apos;t need 100% soundness. They decide to cut off checking at 5 levels of recursion and just trust the type at that point. (They showcased this in their TypeScript 2018 Build video which can be found <a href="https://youtu.be/hDACN-BGvI8" target="_blank">here</a>).</p>
 <h3 id="conditional-type">Conditional type</h3>
 <h3 id="optional-type">Optional type</h3>
 <h3 id="indexable-type">Indexable type</h3>
@@ -415,7 +438,7 @@ g.width; <span class="hljs-comment">// We cannot access the width property becau
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-14T23:31:02.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T23:32:39.463Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-14T23:57:32.755Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T23:57:25.948Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
