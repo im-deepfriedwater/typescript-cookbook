@@ -1,5 +1,5 @@
 ### What is a TSCONFIG file
-The TypeScript compiler is extensively configurable. It figures out what settings are on through parsing a file known as `tsconfig.json`. If the TypeScript compiler finds a `tsconfig.json` file then it automatically considers the directory it is in as the root directory of a TypeScript project. The following are various fields you can have in your file. Don't forget it is a JSON file, so we follow normal JSON syntax.
+The TypeScript compiler is extensively configurable. It figures out what settings are on through parsing a file known as `tsconfig.json`. If the TypeScript compiler finds a `tsconfig.json` file then it automatically considers the directory it is in as the root directory of a TypeScript project. The following are various fields you can have in your file. Don't forget it is a JSON file, so we follow normal JSON syntax. You can generate a default file by going to a TypeScript project in your terminal and running `tsc --init`.
 
 ### Compiler Options
 The options in here tell TypeScript how to compile your files. In here is where you can specify how strict or un-strict you prefer TypeScript to be when it checks your code.

@@ -290,7 +290,117 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h3 id="project-setup">Project setup</h3>
+<p>TypeScript projects normally are structured as conventional NodeJS projects. The <code>package.json</code> and <code>tsconfig.json</code> files should be in the root directory. </p>
+<p>Reminder: TypeScript must be installed via NPM! <code>npm install typescript</code>. You can also quickly generate a <code>tsconfig.json</code> file with default options by entering <code>tsc --init</code> in your favorite terminal at the desired folder of a TypeScript project.</p>
+<p>Assume our <code>tsconfig.json</code> file has the following contents:</p>
+<pre><code class="lang-JSON">{   
+    <span class="hljs-string">&quot;compileOnSave&quot;</span>: <span class="hljs-literal">true</span>,
+
+    <span class="hljs-string">&quot;compilerOptions&quot;</span>: {
+        <span class="hljs-string">&quot;outDir&quot;</span>: <span class="hljs-string">&quot;./built&quot;</span>,
+        <span class="hljs-string">&quot;allowJs&quot;</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">&quot;target&quot;</span>: <span class="hljs-string">&quot;es2016&quot;</span>,
+        <span class="hljs-string">&quot;noImplicitAny&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;strict&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;noImplicitThis&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;rootDir&quot;</span>: <span class="hljs-string">&quot;src&quot;</span> 
+    },
+}
+</code></pre>
+<p>The following represents the structure of what our root directory would be:</p>
+<pre><code>src   &lt;- commonly code is kept in the `src` folder.
+    /nested_directory
+        /nestedfile.ts
+    /helloworld.ts
+    /projectexample.ts
+package.json
+tsconfig.json
+built
+    /nested_directory
+        /nestedfile.js
+    /helloworld.js
+    /projectexample.js
+</code></pre><p>If one does not specify an <code>outputDir</code> in the <code>tsconfig.json</code> file then TypeScript defaults to outputting files into the <code>built</code> folder at the root of the project. Note that TypeScript preservers the file structure of the <code>src</code> folder. </p>
+<p>Let&apos;s say there are test scripts we DON&apos;T want TypeScript to try to compile for some reason.</p>
+<pre><code class="lang-JSON">{   
+    <span class="hljs-string">&quot;compileOnSave&quot;</span>: <span class="hljs-literal">true</span>,
+
+    <span class="hljs-string">&quot;compilerOptions&quot;</span>: {
+        <span class="hljs-string">&quot;outDir&quot;</span>: <span class="hljs-string">&quot;./built&quot;</span>,
+        <span class="hljs-string">&quot;allowJs&quot;</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">&quot;target&quot;</span>: <span class="hljs-string">&quot;es2016&quot;</span>,
+        <span class="hljs-string">&quot;noImplicitAny&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;strict&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;noImplicitThis&quot;</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;rootDir&quot;</span>: <span class="hljs-string">&quot;src&quot;</span> 
+    },
+
+    <span class="hljs-string">&quot;exclude&quot;</span>: [
+        <span class="hljs-string">&quot;src/test/**/*&quot;</span>
+    ]
+}
+</code></pre>
+<p>src   &lt;- commonly keep code 
+    /nested_directory
+        /nestedfile.ts
+    /helloworld.ts
+    /projectexample.ts
+test
+    /testrunner.js
+package.json
+tsconfig.json
+built
+    /nested_directory
+        /nestedfile.js
+    /helloworld.js
+    /projectexample.js</p>
+<pre><code>
+### Working with node modules in TypeScript
+It would be a shame to took advantage of the NodeJS module ecosystem we have access to. Many npm modules have been updated by their creators to include types for us to work with, and some have not been updated. But that&apos;s ok if they have not! Npm modules that have not been updated to include type annotations are still compatible. 
+
+First, we will look at trying to use a built-in module from NodeJS to read and write to a simple file. 
+
+1. We&apos;ll have to install the types documentation for the NodeJS modules. Run, `npm install @types/node --save-dev` at the root of your project via your favorite terminal.
+
+2. Make sure in the `&quot;compilerOptions&quot;` in your `tsconfig.json` field contains the following value and field:
+```JSON
+{
+    &quot;compilerOptions&quot;: {
+        ...
+        &quot;moduleResolution&quot;: &quot;node&quot;
+        ...
+    }
+</code></pre><pre><code class="lang-TypeScript"><span class="hljs-comment">// src/readFile.ts</span>
+<span class="hljs-keyword">import</span> * as fs from <span class="hljs-string">&apos;fs&apos;</span>;
+<span class="hljs-built_in">console</span>.log(fs.readFileSync(<span class="hljs-string">&apos;./readme.md&apos;</span>));
+</code></pre>
+<h3 id="running-files">Running files</h3>
+<p>TypeScript does its checks during compile time. So, we can compile it by running <code>tsc</code> in your favorite terminal. If the output directory does not already exist TypeScript will make one for you, and copy your folder structure as well. </p>
+<p><code>CD</code> into the <code>built</code> folder and look for the name of your TypeScript file, but with a <code>.js</code> extension. Run a node command using that file as the parameter. <code>node built/src/readFile.ts</code>. </p>
+<p>It works similar for non-built-ins! Be sure to <code>npm install &lt;module-name&gt;</code> and TypeScript will suggest to you if there is extra type documentation recommended for downloaded for that specific module. If the types exist, the module and any code you have that uses will be checked by TypeScript to be type safe! Additionally, it even enables editors that work well with TypeScript to provide an autocomplete that would not have existed prior. </p>
+<h3 id="creating-your-own-modules">Creating your own modules</h3>
+<p>Just as common, users create their own modules for convenient reuse. Here is how you can write and import different TypeScript programs as modules:</p>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Assume this file is named something like, `src/shape.ts`</span>
+<span class="hljs-comment">// Export allows us to use this class in other files.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Shape {
+    <span class="hljs-comment">// something to note here is that the keyword public </span>
+    <span class="hljs-comment">// will automatically make a `this.number = number;` for you. </span>
+    <span class="hljs-keyword">public</span> Shape(<span class="hljs-keyword">public</span> numberOfSides: <span class="hljs-built_in">number</span>, rounded: <span class="hljs-built_in">boolean</span>) {
+        <span class="hljs-keyword">this</span>.rounded = rounded;
+    }
+}
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Assume this file is named something like, `src/shapeUser.ts</span>
+<span class="hljs-comment">// AND that `src/shape.ts` exists.</span>
+<span class="hljs-comment">// We destructure the shape property from the export, then</span>
+<span class="hljs-comment">// we make an alias for us so we can label it as `shapeClass`</span>
+<span class="hljs-keyword">export</span> {Shape as shapeClass} from <span class="hljs-string">&quot;src/shape.ts&quot;</span>;
+<span class="hljs-keyword">const</span> circle = <span class="hljs-keyword">new</span> Shape(<span class="hljs-number">5</span>, rounded = <span class="hljs-literal">false</span>);
+}
+</code></pre>
+<p>There&apos;s a lot more to it, but this should be good starting point for users to get a sense of how TypeScript projects can be setup. </p>
+
                                 
                                 </section>
                             
@@ -333,7 +443,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Project Setup Tips and Tricks","level":"1.7","depth":1,"next":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"previous":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project-setup.md","mtime":"2018-12-13T10:08:58.724Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T07:02:05.849Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Project Setup Tips and Tricks","level":"1.7","depth":1,"next":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"previous":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project-setup.md","mtime":"2018-12-14T09:29:33.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T09:35:10.829Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
