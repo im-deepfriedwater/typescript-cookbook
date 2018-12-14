@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Long list of example programs · GitBook</title>
+        <title>Basic coding with TypeScript · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="links.html" />
+    <link rel="next" href="built-in.html" />
     
     
-    <link rel="prev" href="conditional-types.md" />
+    <link rel="prev" href="tsconfig.html" />
     
 
     </head>
@@ -141,7 +141,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="basic-coding.html">
+        <li class="chapter active" data-level="1.5" data-path="basic-coding.html">
             
                 <a href="basic-coding.html">
             
@@ -219,7 +219,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="example.html">
+        <li class="chapter " data-level="1.11" data-path="example.html">
             
                 <a href="example.html">
             
@@ -275,7 +275,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Long list of example programs</a>
+        <a href="." >Basic coding with TypeScript</a>
     </h1>
 </div>
 
@@ -290,7 +290,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h3 id="can-we-code-now">Can we code now?</h3>
+<p>Sure. </p>
+<p>We&apos;ll run through some basic code examples to get you started with TypeScript. Don&apos;t forget TypeScript syntactically is JavaScript with type annotations. If you know JavaScript, this&apos;ll be pretty quick! If not, I&apos;ll try to get you started coding wise as quick as possible.</p>
+<p>To test code quickly without setting up a project use the <a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playground!</a></p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">const</span> a = <span class="hljs-string">&quot;&quot;</span>; 
+<span class="hljs-comment">// TypeScript can automatically type infer this to be a string.</span>
+<span class="hljs-comment">// Additionally, since the variable `a` is `const` it can never be reassigned.</span>
+<span class="hljs-keyword">const</span> b: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;If you really feel the need to, you can type this. There&apos;s *not* really a need.&quot;</span>;
+<span class="hljs-comment">// A function that takes in parameter `message` typed as a string and does not return anything.</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">void</span> </span>{
+    <span class="hljs-built_in">console</span>.log(message);
+}
+
+print(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
+print(<span class="hljs-string">&quot;             &quot;</span>);
+print(a);
+print(b);
+print(<span class="hljs-number">11222</span>); <span class="hljs-comment">// This will be flagged as an error by TypeScript!</span>
+</code></pre>
+<pre><code class="lang-TypeScript">// Variables declared with let can be reassigned and mutated freely!
+let numberStringArray: (number | string)[]; 
+numberStringArray.push(5);
+numberStringArray.push(&quot;5&quot;);
+
+function checkForANumberAndString(numberStringArray: (number | string)[]): boolean {
+    return numberStringArray.has(x =&gt; typeof(x) === &quot;number&quot;) &amp;&amp; numberStringArray.has(x =&gt; typeof(x) === &quot;string&quot;);
+}
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Basic examples of expressions.</span>
+<span class="hljs-keyword">const</span> numberValue = <span class="hljs-number">5</span> + <span class="hljs-number">5</span> * <span class="hljs-number">5</span> / <span class="hljs-number">2</span> - (<span class="hljs-number">-10</span>); <span class="hljs-comment">// 27.5</span>
+<span class="hljs-keyword">const</span> stringValue = <span class="hljs-string">&quot;Hello&quot;</span> + <span class="hljs-string">&quot;,&quot;</span>.concat(<span class="hljs-string">&quot; &quot;</span>) + <span class="hljs-string">&quot;world.&quot;</span>; <span class="hljs-comment">// &quot;Hello, world.&quot;</span>
+<span class="hljs-keyword">const</span> booleanValue = (<span class="hljs-number">5</span> &lt; <span class="hljs-number">3</span>) || (numberValue == <span class="hljs-number">27.5</span>); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// TypeScript infers this type as well! We&apos;ll see how to codify this in the                     </span>
+<span class="hljs-comment">// `type interface` section! </span>
+<span class="hljs-keyword">const</span> objectValue = {
+    name: <span class="hljs-string">&quot;TypeScript Cookbook&quot;</span>,
+    year: <span class="hljs-number">2018</span>,
+    description: <span class="hljs-string">&quot;best&quot;</span>
+};
+</code></pre>
+
                                 
                                 </section>
                             
@@ -317,12 +358,12 @@
 
             
                 
-                <a href="conditional-types.md" class="navigation navigation-prev " aria-label="Previous page: Conditional types">
+                <a href="tsconfig.html" class="navigation navigation-prev " aria-label="Previous page: TSConfig options">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="links.html" class="navigation navigation-next " aria-label="Next page: Where to go next">
+                <a href="built-in.html" class="navigation navigation-next " aria-label="Next page: Built-in types">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -333,7 +374,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Long list of example programs","level":"1.11","depth":1,"next":{"title":"Where to go next","level":"1.12","depth":1,"path":"links.md","ref":"links.md","articles":[]},"previous":{"title":"Conditional types","level":"1.10","depth":1,"path":"conditional-types.md","ref":"conditional-types.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"example.md","mtime":"2018-11-29T03:07:40.238Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T05:12:29.180Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Basic coding with TypeScript","level":"1.5","depth":1,"next":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"previous":{"title":"TSConfig options","level":"1.4","depth":1,"path":"tsconfig.md","ref":"tsconfig.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basic-coding.md","mtime":"2018-12-14T05:08:59.175Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T05:12:29.180Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

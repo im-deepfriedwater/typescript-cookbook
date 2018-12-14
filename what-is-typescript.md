@@ -62,7 +62,7 @@ Null safety and type safety are life savers as they are often at the root of man
 
 ### I'm not convinced yet?
 
-Providing type annotations doubly acts as beautiful documentation for code. Plus, you can opt-in as much as you want! Maybe you are just not ready to convert your older JavaScript code base entirely over to TypeScript. You can steadily port as much as you want over, because in the end, TypeScript just transpiles to JavaScript! Transpiling here meaning that, our source code (TypeScript) gets translated to a very similar language (JavaScript). You can also tell TypeScript to be as strict as you need to it to be. Of course, the more strict the more TypeScript can do for you!
+Providing type annotations doubly acts as beautiful documentation for code. Plus, you can opt-in as much as you want! Maybe you are just not ready to convert your older JavaScript code base entirely over to TypeScript. You can steadily port as much as you want over, because in the end, TypeScript just transpiles to JavaScript! Transpiling here meaning that, our source code (TypeScript) gets translated to a very similar language (JavaScript). You can also tell TypeScript to be as strict as you need to it to be. Of course, the more strict options you enable the more TypeScript can do for you!
 
 TypeScript adds a lot of safety checks and quality of life features to VSCode for JavaScript. For example, it provides a lot of auto-completion for JavaScript in VSCode that just wasn't possible before.
 
