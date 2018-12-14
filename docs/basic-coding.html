@@ -167,12 +167,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="gas.html">
+        <li class="chapter " data-level="1.7" data-path="project-setup.html">
             
-                <a href="gas.html">
+                <a href="project-setup.html">
             
                     
-                    TypeScript cooking with rocket fuel
+                    Project Setup Tips and Tricks
             
                 </a>
             
@@ -180,12 +180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="project-setup.html">
+        <li class="chapter " data-level="1.8" data-path="gas.html">
             
-                <a href="project-setup.html">
+                <a href="gas.html">
             
                     
-                    Project Setup Tips and Tricks
+                    TypeScript cooking with rocket fuel
             
                 </a>
             
@@ -292,7 +292,7 @@
                                 
                                 <h3 id="can-we-code-now">Can we code now?</h3>
 <p>Sure. </p>
-<p>We&apos;ll run through some basic code examples to get you started with TypeScript. Don&apos;t forget TypeScript syntactically is JavaScript with type annotations. If you know JavaScript, this&apos;ll be pretty quick! If not, I&apos;ll try to get you started coding wise as quick as possible.</p>
+<p>We&apos;ll run through some basic code snippets to get you started with TypeScript. Don&apos;t forget TypeScript syntactically is JavaScript with type annotations. If you know JavaScript, this&apos;ll be pretty quick! If not, I&apos;ll try to get you started coding wise as quick as possible.</p>
 <p>To test code quickly without setting up a project use the <a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playground!</a></p>
 <pre><code class="lang-TypeScript"><span class="hljs-keyword">const</span> a = <span class="hljs-string">&quot;&quot;</span>; 
 <span class="hljs-comment">// TypeScript can automatically type infer this to be a string.</span>
@@ -315,6 +315,7 @@ numberStringArray.push(5);
 numberStringArray.push(&quot;5&quot;);
 
 function checkForANumberAndString(numberStringArray: (number | string)[]): boolean {
+    // We have access to array methods here since!
     return numberStringArray.has(x =&gt; typeof(x) === &quot;number&quot;) &amp;&amp; numberStringArray.has(x =&gt; typeof(x) === &quot;string&quot;);
 }
 </code></pre>
@@ -358,6 +359,10 @@ function checkForANumberAndString(numberStringArray: (number | string)[]): boole
     year: <span class="hljs-string">&quot;2018&quot;</span>,
     day: <span class="hljs-number">13</span>
 };
+
+<span class="hljs-keyword">if</span> (currentDate.year === <span class="hljs-string">&quot;2018&quot;</span>) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;This is the year this cookbook was originally written!&quot;</span>);
+}
 
 printInfo(currentDate);
 </code></pre>
@@ -404,7 +409,7 @@ printInfo(currentDate);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Basic coding with TypeScript","level":"1.5","depth":1,"next":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"previous":{"title":"TSConfig options","level":"1.4","depth":1,"path":"tsconfig.md","ref":"tsconfig.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basic-coding.md","mtime":"2018-12-14T05:39:12.012Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T05:39:28.650Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Basic coding with TypeScript","level":"1.5","depth":1,"next":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"previous":{"title":"TSConfig options","level":"1.4","depth":1,"path":"tsconfig.md","ref":"tsconfig.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basic-coding.md","mtime":"2018-12-14T06:30:21.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T07:02:05.849Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

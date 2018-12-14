@@ -1,7 +1,7 @@
 ### Can we code now?
 Sure. 
 
-We'll run through some basic code examples to get you started with TypeScript. Don't forget TypeScript syntactically is JavaScript with type annotations. If you know JavaScript, this'll be pretty quick! If not, I'll try to get you started coding wise as quick as possible.
+We'll run through some basic code snippets to get you started with TypeScript. Don't forget TypeScript syntactically is JavaScript with type annotations. If you know JavaScript, this'll be pretty quick! If not, I'll try to get you started coding wise as quick as possible.
 
 To test code quickly without setting up a project use the [TypeScript Playground!](https://www.typescriptlang.org/play/index.html)
 
@@ -29,6 +29,7 @@ numberStringArray.push(5);
 numberStringArray.push("5");
 
 function checkForANumberAndString(numberStringArray: (number | string)[]): boolean {
+    // We have access to array methods here since!
     return numberStringArray.has(x => typeof(x) === "number") && numberStringArray.has(x => typeof(x) === "string");
 }
 
@@ -77,6 +78,10 @@ const currentDate: DateInfo = {
     year: "2018",
     day: 13
 };
+
+if (currentDate.year === "2018") {
+    console.log("This is the year this cookbook was originally written!");
+}
 
 printInfo(currentDate);
 ```

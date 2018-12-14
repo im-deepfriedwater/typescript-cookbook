@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="gas.html" />
+    <link rel="next" href="project-setup.html" />
     
     
     <link rel="prev" href="basic-coding.html" />
@@ -167,12 +167,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="gas.html">
+        <li class="chapter " data-level="1.7" data-path="project-setup.html">
             
-                <a href="gas.html">
+                <a href="project-setup.html">
             
                     
-                    TypeScript cooking with rocket fuel
+                    Project Setup Tips and Tricks
             
                 </a>
             
@@ -180,12 +180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="project-setup.html">
+        <li class="chapter " data-level="1.8" data-path="gas.html">
             
-                <a href="project-setup.html">
+                <a href="gas.html">
             
                     
-                    Project Setup Tips and Tricks
+                    TypeScript cooking with rocket fuel
             
                 </a>
             
@@ -290,7 +290,101 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="built-in-types">Built in types</h3>
+                                <h3 id="built-in-types">Built-in types</h3>
+<p>Types in programming languages can accurately be described as sets of values. We&apos;ll be taking a look at the fundamental types built-in to TypeScript to tell us what we can use in our type annotations.</p>
+<hr>
+<h3 id="boolean">Boolean</h3>
+<p>A basic type, it represents the set of values <code>true</code> and <code>false</code>. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">let</span> logicalResult: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+logicalResult = <span class="hljs-literal">false</span>;
+logicalResult = <span class="hljs-number">5</span> &gt; <span class="hljs-number">3</span>;
+</code></pre>
+<h3 id="number">Number</h3>
+<p>TypeScript does not differentiate between different floats, doubles, integers etc. More accurately, all numbers are floating point values.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">let</span> numberResult = <span class="hljs-number">5</span> + <span class="hljs-number">3</span> - <span class="hljs-number">1</span>;
+numberResult = <span class="hljs-number">0.444444444</span> * <span class="hljs-number">-1</span>;
+</code></pre>
+<h3 id="string">String</h3>
+<p>The string type represents text. There is no smaller type such as the character type. Thus, it can be zero or more characters surrounded by single quotes <code>&apos;test&apos;</code> or double quotes <code>&quot;test&quot;</code>.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">let</span> aString = <span class="hljs-string">&quot;goodbye.&quot;</span>;
+aString = <span class="hljs-string">&apos;so soon&apos;</span>;
+</code></pre>
+<h3 id="any">Any</h3>
+<p>The <code>any</code> type can be used to opt out of type checking. &quot;Any&quot; matches with all types. It can also be used to describe values that we might not know the type of at the time of writing. Or potentially &quot;catch&quot; all functions. As the official TypeScript <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">documentation</a> notes on the <code>any</code> type, it can be used while porting existing to JavaScript code to TypeScript, and then later one may go back and fill in the types gradually. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">let</span> anything: <span class="hljs-built_in">any</span> = <span class="hljs-string">&quot;this&quot;</span>;
+anything = <span class="hljs-string">&apos;can&apos;</span>;
+anything = <span class="hljs-number">4</span>;
+anything = <span class="hljs-literal">false</span>;
+anything = [<span class="hljs-string">&quot;be&quot;</span>, <span class="hljs-string">&quot;anything&quot;</span>];
+</code></pre>
+<h3 id="array">Array</h3>
+<p>The <code>array</code> type represents a collection of values of homogeneous types. The following are equivalent ways to declare an <code>array</code> type.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">const</span> numberArray: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">const</span> numberArray: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">const</span> multiTypeArray: (<span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>)[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;3&quot;</span>];
+<span class="hljs-keyword">const</span> anyTypeArray: <span class="hljs-built_in">any</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;uh&quot;</span>, <span class="hljs-string">&quot;typescript&quot;</span>, <span class="hljs-literal">true</span>];
+</code></pre>
+<h3 id="tuple">Tuple</h3>
+<p>The <code>tuple</code> type is similar to array, but have a <code>fixed</code> length. They can also be heterogeneous. Useful for when you will know confidently what the length will be of the collection every time. </p>
+<p>We&apos;ll see elements of place-oriented programming here as order does matter.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">let</span> tupleValue: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>];
+tupleValue = [<span class="hljs-string">&quot;brook&quot;</span>, <span class="hljs-string">&quot;crook&quot;</span>, <span class="hljs-number">-43</span>]; <span class="hljs-comment">// TypeScript will error out here!</span>
+tupleValue = [<span class="hljs-number">-41</span>, <span class="hljs-string">&quot;cook&quot;</span>, <span class="hljs-string">&quot;book&quot;</span>];
+</code></pre>
+<h3 id="enum">Enum</h3>
+<p>Enums give you a collection of labelled resuable values. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">enum</span> Directions {Up, Down, Left, Right}
+<span class="hljs-keyword">let</span> currentDirection = Directions.Up;
+
+<span class="hljs-keyword">if</span> (currentDirection === Directions.Up) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;It&apos;s up!&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currentDirection === Directions.Left) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Same as my non-dominant hand.&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currentDirection === Directions.Right) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;No comment.&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;We don&apos;t believe in this direction.&quot;</span>);
+}
+</code></pre>
+<h3 id="void">Void</h3>
+<p><code>void</code> is normally used to describe the return values of functions that do not return anything. It <em>can</em> be used to describe variable types. This describes the set of only <code>null</code> or <code>undefined</code>.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span></span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;I did it.&quot;</span>)
+};
+
+doSomething();
+
+<span class="hljs-keyword">const</span> x: <span class="hljs-built_in">void</span> = <span class="hljs-literal">undefined</span>;
+</code></pre>
+<h3 id="null-and-undefined">Null and Undefined</h3>
+<p><code>null</code> and <code>undefined</code> are both the only members of their respective sets. However, they are subtypes of all other built-in types <em>unless</em> users remember to turn on <code>strictNullCheck</code> (as recommended by the <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">TypeScript Handbook</a>). With this flag on <code>null</code> and <code>undefined</code> are no longer subtypes of other types.</p>
+<p>This is recommended because it address the <code>million dollar mistake</code>! Normally, <code>null</code> and <code>undefined</code> as part of other types allows these values to propagate through as developers commonly forget to account for these values coming up in their program. These commonly result in <code>null-reference exceptions</code>. But, turning the flag on will force developers to account for the possibility of <code>null</code> and <code>undefined</code>. We cannot really use <code>null</code> and <code>undefined</code> on their own, but with the <code>strictNullCheck</code> on we can union these types with other built-ins to force us to remember to handle nullable types.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Assuming we have `strictNullCheck` on:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compute</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span></span>): <span class="hljs-title">number</span></span>{
+    <span class="hljs-keyword">return</span> n + <span class="hljs-number">5</span>; <span class="hljs-comment">// Won&apos;t compile! TypeScript knows this could be possibly `null`!</span>
+}
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// Assuming we have `strictNullCheck` on:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computeButZeroIfNull</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span></span>): <span class="hljs-title">number</span></span>{
+    <span class="hljs-keyword">if</span> (n === <span class="hljs-literal">null</span>) { 
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-comment">// An example of control-flow based analysis! TypeScript can reason here</span>
+    <span class="hljs-comment">// that we checked if it was null earlier, so here `n` MUST be number at </span>
+    <span class="hljs-comment">// this point.</span>
+    <span class="hljs-keyword">return</span> n + <span class="hljs-number">5</span>; 
+}
+</code></pre>
+<h3 id="never">Never</h3>
+<p>A <code>never</code> value can never be assigned to ANY other type, even <code>any</code>. It is meant to describe values which in code that will be reached.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throwAnError</span>(<span class="hljs-params"></span>): <span class="hljs-title">never</span> </span>{
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;This function will never return a value.&quot;</span>);
+}
+</code></pre>
+<h3 id="object">Object</h3>
+<p><code>object</code> is a type meant for making built-in library functions make better sense in this type system. Additionally, they represent the set of values of non-primitives such as NOT <code>number</code>, <code>boolean</code>, <code>string</code> etc.</p>
 
                                 
                                 </section>
@@ -323,7 +417,7 @@
                 </a>
                 
                 
-                <a href="gas.html" class="navigation navigation-next " aria-label="Next page: TypeScript cooking with rocket fuel">
+                <a href="project-setup.html" class="navigation navigation-next " aria-label="Next page: Project Setup Tips and Tricks">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -334,7 +428,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Built-in types","level":"1.6","depth":1,"next":{"title":"TypeScript cooking with rocket fuel","level":"1.7","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"previous":{"title":"Basic coding with TypeScript","level":"1.5","depth":1,"path":"basic-coding.md","ref":"basic-coding.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"built-in.md","mtime":"2018-12-14T05:15:01.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T05:39:28.650Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Built-in types","level":"1.6","depth":1,"next":{"title":"Project Setup Tips and Tricks","level":"1.7","depth":1,"path":"project-setup.md","ref":"project-setup.md","articles":[]},"previous":{"title":"Basic coding with TypeScript","level":"1.5","depth":1,"path":"basic-coding.md","ref":"basic-coding.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"built-in.md","mtime":"2018-12-14T07:01:49.115Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T07:02:05.849Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
