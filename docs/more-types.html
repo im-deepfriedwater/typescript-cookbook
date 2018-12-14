@@ -1,0 +1,454 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>How to work with types · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="example.html" />
+    
+    
+    <link rel="prev" href="gas.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="what-is-typescript.html">
+            
+                <a href="what-is-typescript.html">
+            
+                    
+                    What is TypeScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    How do I install it
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="tsconfig.html">
+            
+                <a href="tsconfig.html">
+            
+                    
+                    TSConfig options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="basic-coding.html">
+            
+                <a href="basic-coding.html">
+            
+                    
+                    Basic coding with TypeScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="built-in.html">
+            
+                <a href="built-in.html">
+            
+                    
+                    Built-in types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-setup.html">
+            
+                <a href="project-setup.html">
+            
+                    
+                    Project setup tips and tricks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="gas.html">
+            
+                <a href="gas.html">
+            
+                    
+                    TypeScript cooking with rocket fuel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="more-types.html">
+            
+                <a href="more-types.html">
+            
+                    
+                    How to work with types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="example.html">
+            
+                <a href="example.html">
+            
+                    
+                    Long list of example programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="links.html">
+            
+                <a href="links.html">
+            
+                    
+                    Where to go next
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >How to work with types</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="how-to-do-more-interesting-things-with-types">How to do more interesting things with types</h3>
+<p>We&apos;ve seen some trivial examples of TypeScript&apos;s type system. It is time to expand on that! We will be exploring more interesting features in the type system and how these can be used practically in programs.</p>
+<h3 id="type-alias">Type alias</h3>
+<p>If we want to reuse type declarations, we can declare them using <code>type nameOfType = number | string</code>. Now, the type <code>nameOfType</code> has been bound to the union type of <code>number</code> and <code>string</code>.</p>
+<h3 id="interface-type">Interface type</h3>
+<p>To describe the type of objects in TypeScript, we use interface types. TypeScript follows the principle of structural types, sometimes known as duck typing. Types are not compatible just because we <em>say</em> they are. Types are compatible <em>if</em> they are. For example:</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">interface</span> Vehicle {
+    grounded?: <span class="hljs-built_in">boolean</span>;
+    numberOfWheels: <span class="hljs-built_in">number</span>;
+    model: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-comment">// TypeScript will check to make the object literal we are assinging</span>
+<span class="hljs-comment">// has the *exact* same properties and nothing else!</span>
+<span class="hljs-keyword">const</span> car: Vehicle = {
+    numberOfWheels: <span class="hljs-number">4</span>,
+    grounded: <span class="hljs-literal">true</span>,
+    model: <span class="hljs-string">&quot;best model&quot;</span>
+};
+
+<span class="hljs-comment">// TypeScript will point out an error here because the variable `bike`</span>
+<span class="hljs-comment">// does *not* have model. </span>
+<span class="hljs-keyword">const</span> bike: Vehicle = {
+    numberOfWheels: <span class="hljs-number">2</span>,
+    grounded: <span class="hljs-literal">true</span>
+};
+
+<span class="hljs-comment">// TypeScript will point out an error here because the variable `boat`</span>
+<span class="hljs-comment">// has an extra property and thus is not the same structural as the</span>
+<span class="hljs-comment">// vehicle type. </span>
+<span class="hljs-keyword">const</span> boat: Vehicle = {
+    numberOfWheels: <span class="hljs-number">0</span>,
+    model: <span class="hljs-string">&quot;best boat&quot;</span>,
+    grounded: <span class="hljs-literal">true</span>,
+    harbor: <span class="hljs-string">&quot;west&quot;</span>
+};
+</code></pre>
+<h3 id="union-type">Union type</h3>
+<p>Union types describe the set for values that are compatible to all types that are in the union. The <code>|</code> is used to describe the members of the union. For example, <code>number | boolean | string</code> describes the union type that is compatible with values that are compatible with either <code>number</code>, <code>boolean</code>, or <code>string</code>.</p>
+<p>If there are functions that we expect to take a <code>string</code> or <code>number</code> we might use the union type to describe this. Union types also work with interface types. They only allow you to use members that are in all types of the union.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">interface</span> Square {
+    color: <span class="hljs-built_in">string</span>,
+    width: <span class="hljs-built_in">number</span>
+}
+
+<span class="hljs-keyword">interface</span> Circle {
+    radius: <span class="hljs-built_in">number</span>,
+    color: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">const</span> a: Square | Circle = {
+    radius: <span class="hljs-number">4</span>,
+    color: <span class="hljs-string">&quot;red&quot;</span>
+};
+
+<span class="hljs-keyword">let</span> colorResult = a.color; <span class="hljs-comment">// At this point, `a` is compatible with the `Circle` type specifically so</span>
+<span class="hljs-keyword">let</span> radius = a.radius;     <span class="hljs-comment">// we are able to access properties of the `Circle` interface.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateAShape</span> (<span class="hljs-params"></span>): <span class="hljs-title">Square</span> | <span class="hljs-title">Circle</span> </span>{
+    <span class="hljs-keyword">return</span> { color: <span class="hljs-string">&quot;green&quot;</span>, width: <span class="hljs-number">5</span> };
+}
+
+<span class="hljs-keyword">const</span> g = generateAShape();
+g.color; <span class="hljs-comment">// We can access the color property because it is common to both Square AND Circle.</span>
+g.width; <span class="hljs-comment">// We cannot access the width property because we cannot guarentee this property will exist.</span>
+</code></pre>
+<h3 id="intersection-type">Intersection type</h3>
+<p>Intersection types describe a set that is compatible with objects that are a combination of all the types that are being intersected. This can be used when you need an object that has the properties of ALL types in the intersection. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">interface</span> Square {
+    color: <span class="hljs-built_in">string</span>,
+    width: <span class="hljs-built_in">number</span>
+}
+
+<span class="hljs-keyword">interface</span> Circle {
+    radius: <span class="hljs-built_in">number</span>,
+    color: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">type</span> intersectionType = Square &amp; Circle;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateAShape</span> (<span class="hljs-params"></span>): <span class="hljs-title">intersectionType</span> </span>{
+    <span class="hljs-keyword">return</span> { color: <span class="hljs-string">&quot;blue&quot;</span>, width: <span class="hljs-number">10</span>, radius: <span class="hljs-number">5</span> };
+}
+
+<span class="hljs-keyword">const</span> result = generateAShape();
+<span class="hljs-built_in">console</span>.log(result.color, result.width, result.radius);
+</code></pre>
+<h3 id="generics">Generics</h3>
+<p>Sometimes we do not know what the exact type will be, but we do know what we need to do with it! In that case we can use generics. When we&apos;re declaring a generic type, we use type parameters that we take in.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">type</span> genericExample =
+</code></pre>
+<h3 id="conditional-type">Conditional type</h3>
+<h3 id="optional-type">Optional type</h3>
+<h3 id="indexable-type">Indexable type</h3>
+<h3 id="class-type">Class type</h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="gas.html" class="navigation navigation-prev " aria-label="Previous page: TypeScript cooking with rocket fuel">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="example.html" class="navigation navigation-next " aria-label="Next page: Long list of example programs">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-14T23:31:02.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T23:32:39.463Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
