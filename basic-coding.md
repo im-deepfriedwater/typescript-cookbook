@@ -31,6 +31,7 @@ numberStringArray.push("5");
 function checkForANumberAndString(numberStringArray: (number | string)[]): boolean {
     return numberStringArray.has(x => typeof(x) === "number") && numberStringArray.has(x => typeof(x) === "string");
 }
+
 ```
 
 ```TypeScript
@@ -38,14 +39,45 @@ function checkForANumberAndString(numberStringArray: (number | string)[]): boole
 const numberValue = 5 + 5 * 5 / 2 - (-10); // 27.5
 const stringValue = "Hello" + ",".concat(" ") + "world."; // "Hello, world."
 const booleanValue = (5 < 3) || (numberValue == 27.5); // true
+const functionWhichReturnsANumber: (number) => number = (x: number) => x;
+let answer: number = functionWhichReturnsANumber(999);
 
-// TypeScript infers this type as well! We'll see how to codify this in the                     
-// `type interface` section! 
+// TypeScript infers this type as well!
 const objectValue = {
     name: "TypeScript Cookbook",
     year: 2018,
     description: "best"
 }; 
+```
 
+```TypeScript
+
+// This is a type alias! It declares a type that we can reuse later called `Year`.
+type Year = number | string[] | string;  
+function giveYearBack(x: Year): Year {
+    return x;
+}
+
+// This is an interface type. This is used to described 
+// the structure of a specific object type.
+interface DateInfo {
+    month: number | string;
+    year: number | string;
+    day: number | string;
+}
+
+type Info = Year | DateInfo;
+
+function printInfo(x: Info): void {
+    console.log(x);
+}
+
+const currentDate: DateInfo = {
+    month: 12,
+    year: "2018",
+    day: 13
+};
+
+printInfo(currentDate);
 ```
 
