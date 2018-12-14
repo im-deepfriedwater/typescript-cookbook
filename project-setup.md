@@ -59,6 +59,10 @@ Let's say there are test scripts we DON'T want TypeScript to try to compile for 
 }
 
 ```
+
+Thus, after you run `tsc` your file structure would look like:
+
+```
 src   <- commonly keep code 
     /nested_directory
         /nestedfile.ts

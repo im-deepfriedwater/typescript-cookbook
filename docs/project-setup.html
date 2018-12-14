@@ -341,7 +341,8 @@ built
     ]
 }
 </code></pre>
-<p>src   &lt;- commonly keep code 
+<p>Thus, after you run <code>tsc</code> your file structure would look like:</p>
+<pre><code>src   &lt;- commonly keep code 
     /nested_directory
         /nestedfile.ts
     /helloworld.ts
@@ -354,24 +355,24 @@ built
     /nested_directory
         /nestedfile.js
     /helloworld.js
-    /projectexample.js</p>
-<pre><code>
-### Working with node modules in TypeScript
-It would be a shame to took advantage of the NodeJS module ecosystem we have access to. Many npm modules have been updated by their creators to include types for us to work with, and some have not been updated. But that&apos;s ok if they have not! Npm modules that have not been updated to include type annotations are still compatible. 
-
-First, we will look at trying to use a built-in module from NodeJS to read and write to a simple file. 
-
-1. We&apos;ll have to install the types documentation for the NodeJS modules. Run, `npm install @types/node --save-dev` at the root of your project via your favorite terminal.
-
-2. Make sure in the `&quot;compilerOptions&quot;` in your `tsconfig.json` field contains the following value and field:
-```JSON
-{
-    &quot;compilerOptions&quot;: {
-        ...
-        &quot;moduleResolution&quot;: &quot;node&quot;
-        ...
-    }
-</code></pre><pre><code class="lang-TypeScript"><span class="hljs-comment">// src/readFile.ts</span>
+    /projectexample.js
+</code></pre><h3 id="working-with-node-modules-in-typescript">Working with node modules in TypeScript</h3>
+<p>It would be a shame to took advantage of the NodeJS module ecosystem we have access to. Many npm modules have been updated by their creators to include types for us to work with, and some have not been updated. But that&apos;s ok if they have not! Npm modules that have not been updated to include type annotations are still compatible. </p>
+<p>First, we will look at trying to use a built-in module from NodeJS to read and write to a simple file. </p>
+<ol>
+<li><p>We&apos;ll have to install the types documentation for the NodeJS modules. Run, <code>npm install @types/node --save-dev</code> at the root of your project via your favorite terminal.</p>
+</li>
+<li><p>Make sure in the <code>&quot;compilerOptions&quot;</code> in your <code>tsconfig.json</code> field contains the following value and field:</p>
+<pre><code class="lang-JSON">{
+ <span class="hljs-string">&quot;compilerOptions&quot;</span>: {
+     ...
+     <span class="hljs-string">&quot;moduleResolution&quot;</span>: <span class="hljs-string">&quot;node&quot;</span>
+     ...
+ }
+</code></pre>
+</li>
+</ol>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// src/readFile.ts</span>
 <span class="hljs-keyword">import</span> * as fs from <span class="hljs-string">&apos;fs&apos;</span>;
 <span class="hljs-built_in">console</span>.log(fs.readFileSync(<span class="hljs-string">&apos;./readme.md&apos;</span>));
 </code></pre>
@@ -443,7 +444,7 @@ First, we will look at trying to use a built-in module from NodeJS to read and w
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Project Setup Tips and Tricks","level":"1.7","depth":1,"next":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"previous":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project-setup.md","mtime":"2018-12-14T09:29:33.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T09:35:10.829Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Project Setup Tips and Tricks","level":"1.7","depth":1,"next":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"previous":{"title":"Built-in types","level":"1.6","depth":1,"path":"built-in.md","ref":"built-in.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project-setup.md","mtime":"2018-12-14T09:37:04.935Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T09:37:26.768Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
