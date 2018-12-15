@@ -2,7 +2,7 @@
 We've seen some trivial examples of TypeScript's type system. It is time to expand on that! We will be exploring more interesting features in the type system and how these can be used practically in programs.
 
 ### Type alias
-If we want to reuse type declarations, we can declare them using `type nameOfType = number | string`. Now, the type `nameOfType` has been bound to the union type of `number` and `string`.
+If we want to reuse type declarations, we can declare them using `type nameOfType = number | string`. Now, the type `nameOfType` represents the union type of `number` and `string`. Type aliases don't declare new types, they are simply names that represent the type they represent.
 
 ### Interface type
 To describe the type of objects in TypeScript, we use interface types. TypeScript follows the principle of structural types, sometimes known as duck typing. Types are not compatible just because we *say* they are. Types are compatible *if* they are. For example:
