@@ -241,3 +241,44 @@ const b: NumberedMapping<boolean> = {
 ```
 
 ### Classes
+Classes are meant for more classic object-oriented needs. They function how one might suspect. They seem relatively similar to interfaces in TypeScript. But interfaces do not provide implementation, they are merely descriptions of what needs to be in. Classes typically provide enough information for objects to be instantiated from and thus include implementations.
+
+Classes can extend one another, copying and reusing properties of another.
+
+TypeScript also includes modifiers such as `public`, `private`, and `protected`. Properties of a class are `public` unless stated otherwise and are accessible by anything. `private` is only accessible within a class, `protected` can be accessed by any of the classes that derive the current class.
+
+
+```TypeScript
+class Square {
+    width: number;
+    public color: string;
+    private defaultFillColor: "yellow";
+    protected defaultOutlineColor: "green";
+
+    constructor(width: number, color?: string) {
+        this.width = width;
+        this.color = color ? color : this.defaultFillColor;
+    }
+
+    computeArea(): number {
+        return this.width * this.width;
+    }
+}
+
+class GreenOutlineSquare extends Square {
+    constructor (width: number) {
+        super(width);
+        this.defaultOutlineColor = "green";
+    }
+}
+
+const basicSquare = new Square(40, "red");
+console.log(basicSquare.color);
+console.log(basicSquare.defaultFillColor); // Errors out because it is private!
+let area = basicSquare.computeArea();
+
+const permanentGreenOutlineSquare = new GreenOutlineSquare(10);
+area = permanentGreenOutlineSquare.computeArea();
+
+
+```

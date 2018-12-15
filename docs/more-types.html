@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>How to work with types · GitBook</title>
+        <title>More types · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -198,7 +198,7 @@
                 <a href="more-types.html">
             
                     
-                    How to work with types
+                    More types
             
                 </a>
             
@@ -262,7 +262,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >How to work with types</a>
+        <a href="." >More types</a>
     </h1>
 </div>
 
@@ -484,6 +484,40 @@ b = <span class="hljs-string">&quot;model&quot;</span>; <span class="hljs-commen
 };
 </code></pre>
 <h3 id="classes">Classes</h3>
+<p>Classes are meant for more classic object-oriented needs. They function how one might suspect. They seem relatively similar to interfaces in TypeScript. But interfaces do not provide implementation, they are merely descriptions of what needs to be in. Classes typically provide enough information for objects to be instantiated from and thus include implementations.</p>
+<p>Classes can extend one another, copying and reusing properties of another.</p>
+<p>TypeScript also includes modifiers such as <code>public</code>, <code>private</code>, and <code>protected</code>. Properties of a class are <code>public</code> unless stated otherwise and are accessible by anything. <code>private</code> is only accessible within a class, <code>protected</code> can be accessed by any of the classes that derive the current class.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">class</span> Square {
+    width: <span class="hljs-built_in">number</span>;
+    <span class="hljs-keyword">public</span> color: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">private</span> defaultFillColor: <span class="hljs-string">&quot;yellow&quot;</span>;
+    <span class="hljs-keyword">protected</span> defaultOutlineColor: <span class="hljs-string">&quot;green&quot;</span>;
+
+    <span class="hljs-keyword">constructor</span>(width: number, color?: string) {
+        <span class="hljs-keyword">this</span>.width = width;
+        <span class="hljs-keyword">this</span>.color = color ? color : <span class="hljs-keyword">this</span>.defaultFillColor;
+    }
+
+    computeArea(): <span class="hljs-built_in">number</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.width * <span class="hljs-keyword">this</span>.width;
+    }
+}
+
+<span class="hljs-keyword">class</span> GreenOutlineSquare extends Square {
+    <span class="hljs-keyword">constructor</span> (width: number) {
+        <span class="hljs-keyword">super</span>(width);
+        <span class="hljs-keyword">this</span>.defaultOutlineColor = <span class="hljs-string">&quot;green&quot;</span>;
+    }
+}
+
+<span class="hljs-keyword">const</span> basicSquare = <span class="hljs-keyword">new</span> Square(<span class="hljs-number">40</span>, <span class="hljs-string">&quot;red&quot;</span>);
+<span class="hljs-built_in">console</span>.log(basicSquare.color);
+<span class="hljs-built_in">console</span>.log(basicSquare.defaultFillColor); <span class="hljs-comment">// Errors out because it is private!</span>
+<span class="hljs-keyword">let</span> area = basicSquare.computeArea();
+
+<span class="hljs-keyword">const</span> permanentGreenOutlineSquare = <span class="hljs-keyword">new</span> GreenOutlineSquare(<span class="hljs-number">10</span>);
+area = permanentGreenOutlineSquare.computeArea();
+</code></pre>
 
                                 
                                 </section>
@@ -527,7 +561,7 @@ b = <span class="hljs-string">&quot;model&quot;</span>; <span class="hljs-commen
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-15T04:52:43.789Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T04:52:57.824Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"More types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-15T05:08:45.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T05:09:18.971Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -7,6 +7,6 @@
 * [Built-in types](built-in.md) 
 * [Project setup tips and tricks](project-setup.md)
 * [TypeScript cooking with rocket fuel](gas.md)
-* [How to work with types](more-types.md)
+* [More types](more-types.md)
 * [Long list of example programs](example.md)
 * [Where to go next](links.md)
