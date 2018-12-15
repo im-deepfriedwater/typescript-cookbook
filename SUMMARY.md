@@ -8,5 +8,5 @@
 * [Built-in types](built-in.md) 
 * [Project setup tips and tricks](project-setup.md)
 * [More types](more-types.md)
-* [Long list of example programs](example.md)
+* [List of example programs](example.md)
 * [Where to go next](links.md)
