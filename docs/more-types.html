@@ -313,7 +313,27 @@
     grounded: <span class="hljs-literal">true</span>,
     harbor: <span class="hljs-string">&quot;west&quot;</span>
 };
-</code></pre>
+
+
+Interface types can use the keyword <span class="hljs-string">`extends`</span> on  other interfaces. This copies the properties to allow you to reuse types.
+
+<span class="hljs-string">``</span><span class="hljs-string">`TypeScript
+
+interface Vehicle {
+    wheels: number;
+    model: string;
+}
+
+interface Airplane extends Vehicle {
+    airline: string;
+}
+
+const plane: Airplane = {
+    wheels: 5,
+    model: &quot;fast&quot;,
+    airline: &quot;cheap&quot;
+}
+</span></code></pre>
 <h3 id="union-type">Union type</h3>
 <p>Union types describe the set for values that are compatible to all types that are in the union. The <code>|</code> is used to describe the members of the union. For example, <code>number | boolean | string</code> describes the union type that is compatible with values that are compatible with either <code>number</code>, <code>boolean</code>, or <code>string</code>.</p>
 <p>If there are functions that we expect to take a <code>string</code> or <code>number</code> we might use the union type to describe this. Union types also work with interface types. They only allow you to use members that are in all types of the union.</p>
@@ -392,9 +412,78 @@ g.width; <span class="hljs-comment">// We cannot access the width property becau
 <p>Fun fact, you might think that this type is infinitely recursive. As to figure out what a <code>leftSubTree: LinkedTree&lt;T&gt;</code> is, the compiler would refer back to the definition and see again that it is an interface that contains a <code>leftSubTree</code> of type <code>LinkedTree&lt;T&gt;</code> and so on and so on.</p>
 <p>Turns out, the designers behind TypeScript solved the problem by following their principle that they don&apos;t need 100% soundness. They decide to cut off checking at 5 levels of recursion and just trust the type at that point. (They showcased this in their TypeScript 2018 Build video which can be found <a href="https://youtu.be/hDACN-BGvI8" target="_blank">here</a>).</p>
 <h3 id="conditional-type">Conditional type</h3>
+<p>One of the more esoteric but powerful type features in TypeScript. Conditional types specify the type based on a condition. The quickest way to see this is with examples:</p>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// This line essentially says grab the type of the elements of</span>
+<span class="hljs-comment">// the array. `T extends Array` means the type parameter must </span>
+<span class="hljs-comment">// be compatible with the `array` type. `&lt;infer U&gt;` means </span>
+<span class="hljs-comment">// the type parameter `U` will be inferred from the member type</span>
+<span class="hljs-comment">// of the array. </span>
+<span class="hljs-keyword">type</span> Flatten&lt;T&gt; = T extends <span class="hljs-built_in">Array</span> &lt;infer U&gt; ? U : T;
+<span class="hljs-keyword">const</span> a: Flatten&lt;<span class="hljs-built_in">number</span>[]&gt; = <span class="hljs-number">5</span>; <span class="hljs-comment">// number type</span>
+</code></pre>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// We can also exclude types, and say &quot;we accept certain things BUT NOT this type&quot;.</span>
+<span class="hljs-keyword">type</span> Exclude&lt;T, U&gt; = T extends U ? never : T;
+<span class="hljs-keyword">type</span> T1 = Exclude&lt;<span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | (() =&gt; <span class="hljs-built_in">void</span>), <span class="hljs-built_in">Function</span>&gt;; <span class="hljs-comment">// number | string</span>
+</code></pre>
 <h3 id="optional-type">Optional type</h3>
-<h3 id="indexable-type">Indexable type</h3>
-<h3 id="class-type">Class type</h3>
+<p>In the cases where you want a parameter to be optionally passed in, we can denote these using a <code>?</code>.</p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">interface</span> Square {
+    width: <span class="hljs-built_in">number</span>;
+    color: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateSquare</span>(<span class="hljs-params">width: <span class="hljs-built_in">number</span>, color?: <span class="hljs-built_in">string</span></span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        width: width,
+        color: color ? <span class="hljs-string">&quot;white&quot;</span> : color
+    };
+}         
+
+<span class="hljs-comment">// By default if a parameter doesn&apos;t get passed in but</span>
+<span class="hljs-comment">// it is flagged as an optional parameter it is given</span>
+<span class="hljs-comment">// a value of undefined.</span>
+<span class="hljs-keyword">const</span> callResult = generateSquare(<span class="hljs-number">100</span>);
+<span class="hljs-keyword">const</span> greenSquare = generateSquare(<span class="hljs-number">20</span>, <span class="hljs-string">&quot;green&quot;</span>);
+</code></pre>
+<h3 id="index-type">Index type</h3>
+<p>There are cases where you might want to type something based on the properties of an interface type. These might look a bit harder to understand but I&apos;ll do my best to comment what&apos;s happening. The <code>keyof</code> operator can be used to refer to something as the union of the properties of the type. See below! </p>
+<pre><code class="lang-TypeScript"><span class="hljs-keyword">interface</span> Vehicle {
+    wheels: <span class="hljs-built_in">number</span>;
+    grounded: <span class="hljs-built_in">boolean</span>;
+    name: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">let</span> b: keyof Vehicle;
+b = <span class="hljs-string">&quot;wheels&quot;</span>;
+b = <span class="hljs-string">&quot;grounded&quot;</span>;
+b = <span class="hljs-string">&quot;name&quot;</span>;
+b = <span class="hljs-string">&quot;model&quot;</span>; <span class="hljs-comment">// Errors out here! It *must* be a property of the `Vehicle` interface.</span>
+</code></pre>
+<p>The <code>keyof</code> keyword creates a union between the names of the properties of the <code>Vehicle</code> interface type. If you add properties later on to the <code>Vehicle</code> type, the type of <code>b</code> will automatically be updated to have the new properties at compile time.</p>
+<p>You can also type the members of a mapping. <code>[key: string]: number</code>, describes a mapping that takes in keys only of the <code>string</code> type that map to values only of the <code>number</code> type. </p>
+<pre><code class="lang-TypeScript"><span class="hljs-comment">// A reminder you can name the type parameter anything you want, common convention is to name T for type. But for </span>
+<span class="hljs-comment">// demonstration purposes we&apos;ll name it M here.</span>
+<span class="hljs-keyword">interface</span> NumberedMapping&lt;M&gt; {
+    [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">interface</span> NumberedMapping&lt;M&gt; {
+    [key: <span class="hljs-built_in">number</span>]: M;
+}
+
+<span class="hljs-keyword">const</span> a: NumberedMapping&lt;<span class="hljs-built_in">boolean</span>&gt; = {
+    <span class="hljs-number">1</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-number">2</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-number">3</span>: <span class="hljs-literal">true</span>
+};
+
+<span class="hljs-keyword">const</span> b: NumberedMapping&lt;<span class="hljs-built_in">boolean</span>&gt; = {
+    <span class="hljs-number">10</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-number">13</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-number">99</span>: <span class="hljs-string">&quot;false&quot;</span> <span class="hljs-comment">// TypeScript will point out this isn&apos;t a boolean!</span>
+};
+</code></pre>
+<h3 id="classes">Classes</h3>
 
                                 
                                 </section>
@@ -438,7 +527,7 @@ g.width; <span class="hljs-comment">// We cannot access the width property becau
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-14T23:57:32.755Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T23:57:25.948Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to work with types","level":"1.9","depth":1,"next":{"title":"Long list of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"TypeScript cooking with rocket fuel","level":"1.8","depth":1,"path":"gas.md","ref":"gas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-15T04:52:43.789Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T04:52:57.824Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
