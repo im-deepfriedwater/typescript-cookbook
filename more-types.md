@@ -282,3 +282,6 @@ area = permanentGreenOutlineSquare.computeArea();
 
 
 ```
+
+### There's also a lot more
+I'll leave this here one more time. We've probably only scratched the surface here! The [official TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/advanced-types.html) has a lot more to say about types.
