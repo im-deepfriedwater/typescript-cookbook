@@ -1,4 +1,4 @@
-# Help me install.
+# Help me install please
 
 Sure! It's quite easy. Most commonly, people install TypeScript as a Node.js package to compile (or more specifically _transpile_) from the command-line. Be sure to have a reasonably recent installation of Node.js!
 
