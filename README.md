@@ -8,3 +8,4 @@ Let's get started shall we? Feel free to click along the table of contents in or
 Last Updated: 12/14/2018  
 By Justin Kyle Torres (http://justinkyletorres.com)     
 Under Guidance of Ray Toal (https://github.com/rtoal)
+Shareble Link (http://justinkyletorres.com/typescript-cookbook/)
