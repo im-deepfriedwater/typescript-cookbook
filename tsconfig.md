@@ -106,5 +106,4 @@ function getMoney(id: string): number { // Will error out here because not ALL c
 - Description: A useful convenience flag which turns on all strict type checking for you, such as `strictNullChecks` and so on. Check out the official handbook to see the full list of flags that get turned on.    
 
 
-
 Again, a much more thorough and detailed table of all the possible compiler options for TSCONFIG can be found in the official TypeScript [handbook!](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
