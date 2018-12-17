@@ -39,7 +39,7 @@ const boat: Vehicle = {
     harbor: "west"
 };
 
-
+```
 Interface types can use the keyword `extends` on  other interfaces. This copies the properties to allow you to reuse types.
 
 ```TypeScript

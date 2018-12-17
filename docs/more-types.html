@@ -313,27 +313,24 @@
     grounded: <span class="hljs-literal">true</span>,
     harbor: <span class="hljs-string">&quot;west&quot;</span>
 };
-
-
-Interface types can use the keyword <span class="hljs-string">`extends`</span> on  other interfaces. This copies the properties to allow you to reuse types.
-
-<span class="hljs-string">``</span><span class="hljs-string">`TypeScript
-
-interface Vehicle {
-    wheels: number;
-    model: string;
+</code></pre>
+<p>Interface types can use the keyword <code>extends</code> on  other interfaces. This copies the properties to allow you to reuse types.</p>
+<pre><code class="lang-TypeScript">
+<span class="hljs-keyword">interface</span> Vehicle {
+    wheels: <span class="hljs-built_in">number</span>;
+    model: <span class="hljs-built_in">string</span>;
 }
 
-interface Airplane extends Vehicle {
-    airline: string;
+<span class="hljs-keyword">interface</span> Airplane <span class="hljs-keyword">extends</span> Vehicle {
+    airline: <span class="hljs-built_in">string</span>;
 }
 
-const plane: Airplane = {
-    wheels: 5,
-    model: &quot;fast&quot;,
-    airline: &quot;cheap&quot;
+<span class="hljs-keyword">const</span> plane: Airplane = {
+    wheels: <span class="hljs-number">5</span>,
+    model: <span class="hljs-string">&quot;fast&quot;</span>,
+    airline: <span class="hljs-string">&quot;cheap&quot;</span>
 }
-</span></code></pre>
+</code></pre>
 <h3 id="union-type">Union type</h3>
 <p>Union types describe the set for values that are compatible to all types that are in the union. The <code>|</code> is used to describe the members of the union. For example, <code>number | boolean | string</code> describes the union type that is compatible with values that are compatible with either <code>number</code>, <code>boolean</code>, or <code>string</code>.</p>
 <p>If there are functions that we expect to take a <code>string</code> or <code>number</code> we might use the union type to describe this. Union types also work with interface types. They only allow you to use members that are in all types of the union.</p>
@@ -563,7 +560,7 @@ area = permanentGreenOutlineSquare.computeArea();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"More types","level":"1.9","depth":1,"next":{"title":"List of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"Project setup tips and tricks","level":"1.8","depth":1,"path":"project-setup.md","ref":"project-setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-15T05:19:18.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T06:22:45.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"More types","level":"1.9","depth":1,"next":{"title":"List of example programs","level":"1.10","depth":1,"path":"example.md","ref":"example.md","articles":[]},"previous":{"title":"Project setup tips and tricks","level":"1.8","depth":1,"path":"project-setup.md","ref":"project-setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more-types.md","mtime":"2018-12-17T21:47:04.381Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T21:48:46.057Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

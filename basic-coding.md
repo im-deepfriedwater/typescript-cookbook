@@ -90,7 +90,7 @@ printInfo(currentDate);
 ```TypeScript
 class Shape {
     // something to note here is that the keyword public 
-    // will automatically do`this.number = number;` for you. 
+    // will automatically do `this.number = number;` for you. 
     public Shape(public numberOfSides: number, rounded: boolean) {
         this.rounded = rounded;
     }
