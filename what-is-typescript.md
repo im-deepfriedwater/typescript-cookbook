@@ -12,7 +12,7 @@ function addNumbers(x: number, y: number): number {
     return x + y;
 }
 
-const z: number = 5;
+const z: number = addNumbers(1, 2);
 ```
 
 ```TypeScript
@@ -21,7 +21,7 @@ function addNumbers(x, y) {
     return x + y;
 }
 
-const z = 5;
+const z = addNumbers(1, 2);
 ```
 
 The two examples above are *both* valid TypeScript programs. The type annotations are *optional*. Perhaps unsuprisingly, writing TypeScript without types is basically just writing JavaScript. 

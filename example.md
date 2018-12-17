@@ -3,12 +3,16 @@
 ### fibonacci
 ```TypeScript
 
-function fibonacci(x: number): number {
-    if (x <= 1) {
-        return x;
-    }
+function fibonacci(n: number): number {
+    // No need for types as the local assignment 
+    // to primitives is self-documenting.
+    let sum = 1, current = 0, previous = 0;
 
-    return fibonacci(x - 1) + fibonacci(x - 2);
+    for (let i = 0; i < n; i++) {
+        [previous, current, sum] = [current, sum, current + previous];
+    }
+    
+    return sum;
 }
 ```
 
@@ -21,11 +25,22 @@ function quicksort<T> (array: Array<T>): Array<T> {
     }
 
     const arrayCopy = array.slice(0);
+    // `arrayCopy.pop()` returns an element of type
+    // parameter `T` OR an undefined. Thus pivot
+    // must also be unioned with an undefined.
     const pivot: T | undefined = arrayCopy.pop();
     const lesser: Array<T> = [];
     const greater: Array<T> = [];
 
     arrayCopy.forEach((element) => {
+        // Normally, with strict null checking
+        // TypeScript will point out an error here.
+        // Pivot was typed to potentially be undefined
+        // but TypeScript points out we did not handle
+        // that case at this point. However, if we are
+        // 100% confident that pivot will never be undefined
+        // at this point we can use a `!` to tell TypeScript
+        // not to worry about it.
         if (element > pivot!) {
             greater.push(element);
         } else {
