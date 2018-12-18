@@ -1,4 +1,4 @@
-### How to do more interesting things with types
+### How to do more interesting things with types:
 We've seen some trivial examples of TypeScript's type system. It is time to expand on that! We will be exploring more interesting features in the type system and how these can be used practically in programs.
 
 ### Type alias

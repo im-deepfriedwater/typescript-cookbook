@@ -1,4 +1,4 @@
-### Useful links and works cited
+### Useful links!
 
 These are all awesome resources I've used for you to poke around for more TypeScript resources / something more useful than this cookbook. 
 

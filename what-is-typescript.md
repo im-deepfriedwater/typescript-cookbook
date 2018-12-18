@@ -1,4 +1,4 @@
-## What?
+### What?
 The official tagline for TypeScript is "JavaScript that scales!" It justifies this tagline through these two features:
     1. TypeScript is a superset of JavaScript.
     2. TypeScript is a statically-typed programming with powerful control-flow based type analysis.

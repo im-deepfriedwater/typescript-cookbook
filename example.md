@@ -1,4 +1,4 @@
-### Here is a list of example programs
+### Here is a list of example programs:
 
 ### fibonacci
 ```TypeScript

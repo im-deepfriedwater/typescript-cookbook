@@ -1,4 +1,4 @@
-### Project setup
+### Project setup:
 TypeScript projects normally are structured as conventional NodeJS projects. The `package.json` and `tsconfig.json` files should be in the root directory. 
 
 Reminder: TypeScript must be installed via NPM! `npm install typescript`. You can also quickly generate a `tsconfig.json` file with default options by entering `tsc --init` in your favorite terminal at the desired folder of a TypeScript project.

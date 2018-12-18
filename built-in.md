@@ -1,4 +1,4 @@
-### Built-in types
+### Built-in types:
 Types in programming languages can accurately be described as sets of values. We'll be taking a look at the fundamental types built-in to TypeScript to tell us what we can use in our type annotations.
 _________________
 
