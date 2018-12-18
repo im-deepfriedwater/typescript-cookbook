@@ -6,10 +6,10 @@
 function fibonacci(n: number): number {
     // No need for types as the local assignment 
     // to primitives is self-documenting.
-    let sum = 1, current = 0, previous = 0;
+    let sum = 1, previous = 0;
 
     for (let i = 0; i < n; i++) {
-        [previous, current, sum] = [current, sum, current + previous];
+        [previous, sum] = [sum, previous + sum];
     }
     
     return sum;
