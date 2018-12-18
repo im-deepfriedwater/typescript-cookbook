@@ -53,7 +53,7 @@ const objectValue = {
 
 ```TypeScript
 
-// This is a type alias! It declares a type that we can reuse later called `Year`.
+// This is a type alias! It declares a name or "alias" that we can reuse later called `Year`.
 type Year = number | string[] | string;  
 function giveYearBack(x: Year): Year {
     return x;
